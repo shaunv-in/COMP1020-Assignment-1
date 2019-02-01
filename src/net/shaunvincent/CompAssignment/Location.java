@@ -14,17 +14,16 @@ public class Location { ;
         difficulty = newDifficulty;
         newLocation = GameData.getRandomLocationName();
 
-        if(GameData.randomRoll(0,2) == 1){
+        if(GameData.randomRoll(0,2) == 1) {
             treasure = new Item();
 
         }
-        else if(GameData.randomRoll(0,2) == 0){
+        else if(GameData.randomRoll(0,2) == 0) {
             treasure = null;
         }
-
     }
 
-    public String toString(){
+    public String toString() {
         return newLocation;
     }
 
