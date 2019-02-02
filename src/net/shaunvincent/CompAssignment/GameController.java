@@ -5,6 +5,7 @@ public class GameController{
     private static final int MAP_LOCATIONS = 6;
 
     private static Location[] map;
+    private static Location[] currentItem;
 
     private Player currentPlayer;
 
@@ -21,10 +22,12 @@ public class GameController{
 
         // Initialize The Map
 
-        map = new Location[MAP_LOCATIONS];
+        map = new Location[numberOfLocations];
+        currentItem = new Location[numberOfLocations];
 
-        for(int i=0; i< MAP_LOCATIONS;i++){
+        for(int i=0; i< numberOfLocations;i++){
             map[i] = new Location(i);
+            currentItem[i] = new Location(i);
         }
 
     }
@@ -39,7 +42,7 @@ public class GameController{
 
         for(int i=0; i< MAP_LOCATIONS;i++){
             System.out.println("You enter a " + map[i].toString() + " (D:"+ i + ")");
-            System.out.println("You don't see anything worth taking here");
+            System.out.println("You see a " + currentItem[i].toString() + " in the corner. \n");
         }
 
         // Print out the map
