@@ -8,6 +8,8 @@ public class Location {
 
     private String treasure;
     private Item currentItem;
+    private Monster currentMonster;
+    private String Monster;
 
     private String tempTreasure = null;
 
@@ -15,6 +17,8 @@ public class Location {
 
         difficulty = newDifficulty;
         newLocation = GameData.getRandomLocationName();
+        currentMonster = new Monster(newDifficulty);
+        Monster = currentMonster.toString();
 
         if(GameData.randomRoll(0,2) == 1) {
             currentItem = new Item();
@@ -27,10 +31,12 @@ public class Location {
 
     public String toString() {
         if(hasTreasure()) {
-            return newLocation + " (D:" + difficulty + ")\nYou see a " + tempTreasure + " in the corner.\n";
+            return newLocation + " (D:" + difficulty + ")\nYou see a " + tempTreasure + " in the corner.\nThere is a " +
+                    Monster + " guarding the treasure.";
         }
         else {
-            return newLocation + " (D:" + difficulty + ")\nYou dont see anything worth taking here. \n";
+            return newLocation + " (D:" + difficulty + ")\nYou dont see anything worth taking here. \nThere is a " +
+                    Monster + " guarding the treasure.";
         }
     }
 

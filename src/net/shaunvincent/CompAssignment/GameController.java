@@ -39,6 +39,7 @@ public class GameController {
 
         for(int i=0; i< MAP_LOCATIONS;i++) {
             System.out.println("You enter a " + map[i].toString());
+            System.out.println("----- End of Location -----\n");
         }
 
         // Print out the map
