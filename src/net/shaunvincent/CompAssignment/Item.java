@@ -14,7 +14,7 @@ public class Item {
     public Item() {
         itemName = GameData.getRandomItemName();
     }
-    public String toString(){
+    public String toString() {
         return itemName;
     }
 }

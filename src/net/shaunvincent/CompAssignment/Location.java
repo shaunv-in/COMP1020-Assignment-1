@@ -1,13 +1,15 @@
 package net.shaunvincent.CompAssignment;
 
-public class Location { ;
+public class Location {
+
     private String newLocation;
 
     private int difficulty;
 
-    Item treasure;
+    private String treasure;
+    private Item currentItem;
 
-    Item tempTreasure = null;
+    private String tempTreasure = null;
 
     public Location(int newDifficulty) {
 
@@ -15,8 +17,8 @@ public class Location { ;
         newLocation = GameData.getRandomLocationName();
 
         if(GameData.randomRoll(0,2) == 1) {
-            treasure = new Item();
-
+            currentItem = new Item();
+            treasure = currentItem.toString();
         }
         else if(GameData.randomRoll(0,2) == 0) {
             treasure = null;
@@ -24,24 +26,28 @@ public class Location { ;
     }
 
     public String toString() {
-        return newLocation;
+        if(hasTreasure()) {
+            return newLocation + " (D:" + difficulty + ")\nYou see a " + tempTreasure + " in the corner.\n";
+        }
+        else {
+            return newLocation + " (D:" + difficulty + ")\nYou dont see anything worth taking here. \n";
+        }
     }
 
-    public boolean hasTreasure(){
+    public boolean hasTreasure() {
 
-        if(treasure == null){
+        if(stealTreasure() == null) {
             return false;
         }
-        else{
+        else {
             return true;
         }
 
     }
 
-//    public stealTreasure(){
-//
-//        treasure = tempTreasure;
-//        return tempTreasure;
-//
-//    }
+    public String stealTreasure() {
+        tempTreasure = treasure;
+        treasure = null;
+        return tempTreasure;
+    }
 }

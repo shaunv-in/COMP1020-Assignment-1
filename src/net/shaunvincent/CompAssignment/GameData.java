@@ -27,7 +27,7 @@ public class GameData {
     // This method returns names of monsters.
     // The type of monster is determined by the difficulty of the location
     // we can use the difficulty as an index to get a monster from the list
-    public static String getMonsterNameByDifficulty(int difficulty){
+    public static String getMonsterNameByDifficulty(int difficulty) {
         String returnMonster = "Default Monster";
         if( difficulty >= 0 && difficulty < monsterList.length){
             returnMonster = monsterList[difficulty];
@@ -38,7 +38,7 @@ public class GameData {
     }
 
     // Phase 2
-    public static String getRandomItemName(){
+    public static String getRandomItemName() {
         int indexAdjective = randomRoll(0,itemAdjectives.length);
         int indexNoun = randomRoll(0,itemNouns.length);
         String returnName = itemAdjectives[indexAdjective] + " " + itemNouns[indexNoun];
@@ -47,7 +47,7 @@ public class GameData {
 
     // Phase 1
     // Generate a random persons name from the list supplied above
-    public static String getRandomName(){
+    public static String getRandomName() {
         int index = randomRoll(0,randomNames.length);
         String name = randomNames[index];
         return name;
@@ -55,7 +55,7 @@ public class GameData {
 
     // Generates a random two word name for the net.shaunvincent.CompAssignment.Location and returns it.
     // Sample names could include: "Cold Cave", "Damp Hallway", "Soggy Room" etc.
-    public static String getRandomLocationName(){
+    public static String getRandomLocationName() {
         // randomly roll to get the adjective.
         int indexAdjective = randomRoll(0, locationAdjectives.length);
         // randomly roll to get the noun.
@@ -67,7 +67,7 @@ public class GameData {
 
     // ======== Utility Functions ========
     // Roll a random int between min (inclusive) and max (exclusive)
-    public static int randomRoll(int min, int max){
+    public static int randomRoll(int min, int max) {
         int randomNum = 0;
 
         randomNum = (int) (Math.random() * (max + min));

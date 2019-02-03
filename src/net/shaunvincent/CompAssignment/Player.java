@@ -10,7 +10,7 @@ public class Player {
         playerName = GameData.getRandomName();
         currentHP = STARTING_HP;
     }
-    public String toString(){
+    public String toString() {
 
         return "\n\n---------------------------\n" + "Current player:  " + playerName + "\nCurrent HP:  " + currentHP + "\n---------------------------\n\n";
 

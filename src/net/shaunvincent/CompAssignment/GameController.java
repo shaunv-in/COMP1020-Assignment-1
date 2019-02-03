@@ -1,15 +1,14 @@
 package net.shaunvincent.CompAssignment;
 
-public class GameController{
+public class GameController {
     // Phase 0
     private static final int MAP_LOCATIONS = 6;
 
     private static Location[] map;
-    private static Location[] currentItem;
 
     private Player currentPlayer;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         GameController game = new GameController();
 
@@ -18,21 +17,19 @@ public class GameController{
 
     }
 
-    public void initializeMap(int numberOfLocations){
+    public void initializeMap(int numberOfLocations) {
 
         // Initialize The Map
 
         map = new Location[numberOfLocations];
-        currentItem = new Location[numberOfLocations];
 
-        for(int i=0; i< numberOfLocations;i++){
+        for(int i=0; i< numberOfLocations;i++) {
             map[i] = new Location(i);
-            currentItem[i] = new Location(i);
         }
 
     }
 
-    public void startGame(){
+    public void startGame() {
 
         currentPlayer = new Player();
 
@@ -40,9 +37,8 @@ public class GameController{
 
         // Prints out location
 
-        for(int i=0; i< MAP_LOCATIONS;i++){
-            System.out.println("You enter a " + map[i].toString() + " (D:"+ i + ")");
-            System.out.println("You see a " + currentItem[i].toString() + " in the corner. \n");
+        for(int i=0; i< MAP_LOCATIONS;i++) {
+            System.out.println("You enter a " + map[i].toString());
         }
 
         // Print out the map
