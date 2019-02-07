@@ -2,41 +2,35 @@ package net.shaunvincent.CompAssignment;
 
 public class Location {
 
-    private String newLocation;
+    private Monster currentMonster;
+    private Item currentItem;
 
     private int difficulty;
-
-    private String treasure;
-    private Item currentItem;
-    private Monster currentMonster;
-    private String Monster;
-
-    private String tempTreasure = null;
+    private String locationName;
 
     public Location(int newDifficulty) {
 
         difficulty = newDifficulty;
-        newLocation = GameData.getRandomLocationName();
+        locationName = GameData.getRandomLocationName();
         currentMonster = new Monster(newDifficulty);
-        Monster = currentMonster.toString();
 
         if(GameData.randomRoll(0,2) == 1) {
             currentItem = new Item();
-            treasure = currentItem.toString();
+            currentItem.toString();
         }
         else if(GameData.randomRoll(0,2) == 0) {
-            treasure = null;
+            currentItem = null;
         }
     }
 
     public String toString() {
         if(hasTreasure()) {
-            return newLocation + " (D:" + difficulty + ")\nYou see a " + tempTreasure + " in the corner.\nThere is a " +
-                    Monster + " guarding the treasure.";
+            return locationName + " (D:" + difficulty + ")\nYou see a " + currentItem.toString() + " in the corner.\nThere is a " +
+                    currentMonster.toString() + " guarding the treasure.";
         }
         else {
-            return newLocation + " (D:" + difficulty + ")\nYou dont see anything worth taking here. \nThere is a " +
-                    Monster + " guarding the treasure.";
+            return locationName + " (D:" + difficulty + ")\nYou dont see anything worth taking here. \nThere is a " +
+                    currentMonster.toString() + " guarding the treasure.";
         }
     }
 
@@ -51,9 +45,7 @@ public class Location {
 
     }
 
-    public String stealTreasure() {
-        tempTreasure = treasure;
-        treasure = null;
-        return tempTreasure;
+    public Item stealTreasure() {
+        return currentItem;
     }
 }

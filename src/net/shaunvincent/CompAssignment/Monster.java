@@ -1,6 +1,7 @@
 package net.shaunvincent.CompAssignment;
 
 public class Monster {
+
     private String name;
     private int difficulty;
 
