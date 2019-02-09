@@ -1,6 +1,6 @@
 package net.shaunvincent.CompAssignment;
 // Game Data - Phase 3
-// Returns a Random net.shaunvincent.CompAssignment.Location Name
+// Returns a Random Location Name
 // and contains the basic random number generator
 
 public class GameData {

@@ -7,6 +7,7 @@ public class GameController {
     private static Location[] map;
     private Player currentPlayer;
 
+    //Main method runs the the entire game
     public static void main(String[] args) {
 
         //Initializing game
@@ -19,20 +20,24 @@ public class GameController {
         game.startGame();
     }
 
+    //Runs the map
     public void initializeMap(int numberOfLocations) {
 
         // Initialize The Map
         map = new Location[numberOfLocations];
 
+        //Initializing each location in the map
         for(int i=0; i< numberOfLocations;i++) {
             map[i] = new Location(i);
         }
 
     }
 
+    //Method for each location
     private void enterLocation(Location locationPosition) {
         //Prints out the location
-        System.out.println("You enter a " + locationPosition.toString());
+        System.out.println("You enter a " + locationPosition.toString() + "\n" + currentPlayer.getPlayerName()
+                + " encounters a " + locationPosition.getMonster());
 
         //Checking if the location has treasure
         if(locationPosition.hasTreasure()) {
@@ -43,6 +48,7 @@ public class GameController {
         System.out.println("----- End of Location -----\n");
     }
 
+    //Method for Game start with player details, locations and game ending
     public void startGame() {
 
         //Initializing the currentPlayer variable
@@ -57,10 +63,10 @@ public class GameController {
         }
 
         //Referencing the current items
-        System.out.println("\nYou made it to the end. Your loot bag contains:\nCurrent Items:" + currentPlayer.getItemsCollected());
+        System.out.println("\n" + currentPlayer.getPlayerName() + " made it to the end and escaped with:\nCurrent Items:" + currentPlayer.getItemsCollected());
 
         //Styling
-        System.out.println("\n--- The End --- \n\n");
+        System.out.println("\n--- The End --- \n");
     }
 
 }
