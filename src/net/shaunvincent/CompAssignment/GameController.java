@@ -27,25 +27,65 @@ public class GameController {
         map = new Location[numberOfLocations];
 
         //Initializing each location in the map
-        for(int i=0; i< numberOfLocations;i++) {
+        for (int i = 0; i < numberOfLocations; i++) {
             map[i] = new Location(i);
         }
-
     }
 
     //Method for each location
     private void enterLocation(Location locationPosition) {
-        //Prints out the location
-        System.out.println("You enter a " + locationPosition.toString() + "\n" + currentPlayer.getPlayerName()
-                + " encounters a " + locationPosition.getMonster());
+        int damageRoll, damageBonus = 0, totalDamage;
 
-        //Checking if the location has treasure
-        if(locationPosition.hasTreasure()) {
-            currentPlayer.addItem(locationPosition.stealTreasure());
+        damageRoll = currentPlayer.damageDealt();
+        damageBonus += currentPlayer.damageBonus();
+        totalDamage = damageRoll + damageBonus ;
+
+        if(totalDamage <= 0) {
+            System.out.println("\nThe player died while attacking " + locationPosition.getMonster() + ".\n");
         }
 
-        //Styling
-        System.out.println("----- End of Location -----\n");
+        else {
+            //Prints out the location
+            System.out.println("You enter a " + locationPosition.toString() + "\n" + currentPlayer.getPlayerName() + " encounters a " + locationPosition.getMonster());
+
+            //Checking if the location has treasure
+            if (locationPosition.hasTreasure()) {
+                currentPlayer.addItem(locationPosition.stealTreasure());
+                totalDamage = damageRoll + damageBonus + currentPlayer.takeDamage(locationPosition.getDifficulty());
+
+                //Checking the totalDamage is greater than the level difficulty
+                if (totalDamage >= locationPosition.getDifficulty()) {
+                    if (totalDamage <= 0) {
+                        System.out.println("\nThe player died while attacking " + locationPosition.getMonster() + ".\n");
+                    }
+                    else {
+                        System.out.println(currentPlayer.getPlayerName() + " defeats the " + locationPosition.getMonster()
+                                + " dealing " + totalDamage + " plus " + damageBonus);
+
+                        System.out.println(currentPlayer.getPlayerName() + " steals the treasure " + locationPosition.stealTreasure()
+                                + " from the " + locationPosition.getMonster());
+                    }
+                }
+                else if (totalDamage < locationPosition.getDifficulty()) {
+                    totalDamage = damageRoll + damageBonus + currentPlayer.takeDamage(locationPosition.getDifficulty());
+
+                    if (totalDamage <= 0) {
+                        System.out.println("\nThe player died while attacking " + locationPosition.getMonster() + ".\n");
+                    }
+                    else {
+                        System.out.println(currentPlayer.getPlayerName() + " defeats the " + locationPosition.getMonster()
+                                + " dealing " + totalDamage + " plus " + damageBonus);
+                    }
+                }
+            }
+            else {
+                System.out.println(currentPlayer.getPlayerName() + " defeats the " + locationPosition.getMonster()
+                        + " dealing " + totalDamage + " plus " + damageBonus);
+            }
+
+            //Styling
+            System.out.println("----- End of Location -----\n");
+        }
     }
 
     //Method for Game start with player details, locations and game ending

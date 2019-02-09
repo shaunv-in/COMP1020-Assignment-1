@@ -4,7 +4,7 @@ public class Player {
 
     private String playerName;
     private int currentHP;
-    private int STARTING_HP = 8;
+    private int STARTING_HP = 8, MIN_DAMAGE = 1, MAX_DAMAGE = 8;
 
     private ItemList listOfItems;
 
@@ -22,6 +22,22 @@ public class Player {
         listOfItems.addItem(itemRef);
     }
 
+    //Returns the damageBonus
+    public int damageBonus(){
+        return listOfItems.getCurrentItemCount();
+    }
+
+    //Returns the damageDealt
+    public int damageDealt(){
+        return GameData.randomRoll(MIN_DAMAGE,MAX_DAMAGE);
+    }
+
+    //Returns the takeDamage
+    public int takeDamage(int damageAmount){
+        currentHP -= damageAmount;
+        return currentHP;
+    }
+
     //Returns the collected items list
     public String getItemsCollected() {
         return "\n" + listOfItems.toString();
@@ -30,6 +46,10 @@ public class Player {
     //Returns player name
     public String getPlayerName(){
         return playerName;
+    }
+
+    public int getSTARTING_HP(){
+        return STARTING_HP;
     }
 
     //Returns the Player informations

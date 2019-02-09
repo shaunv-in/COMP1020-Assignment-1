@@ -25,6 +25,10 @@ public class Location {
         }
     }
 
+    public int getDifficulty(){
+        return difficulty;
+    }
+
     //Returns location name, item collected and monster name
     public String toString() {
 

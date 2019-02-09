@@ -20,6 +20,10 @@ public class ItemList {
         currentItemCount++;
     }
 
+    public int getCurrentItemCount(){
+        return currentItemCount;
+    }
+
     //Returns items in an ordered format
     public String toString() {
         for(int i=0;i<currentItemCount;i++) {
